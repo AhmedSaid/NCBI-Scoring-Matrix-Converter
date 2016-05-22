@@ -71,24 +71,24 @@ namespace NCBI_Matrix_Converter
 
             // Split the Last Line
             string lastLine = matrix.Substring(matrix.LastIndexOf('{'), matrix.LastIndexOf(',')- matrix.LastIndexOf('{')+1);
-            matrix = matrix.Remove(matrix.LastIndexOf('{')-3, matrix.LastIndexOf(',')- matrix.LastIndexOf('{')+1);
+            matrix = matrix.Remove(matrix.LastIndexOf(",\n{"), matrix.LastIndexOf(',')- matrix.LastIndexOf('{')+3);
             matrix = matrix.TrimEnd();
 
             // Format the matrix to Array format
             matrix = Regex.Replace(matrix, "(-?[0-9]+)(\\s+)(-?[0-9]+)", "$1$2,$3,");
             
             // Get matrix symbols
-            var matches = Regex.Matches(firstLine, "([A|R|N|D|C|Q|E|G|H|I|L|K|M|F|P|S|T|W|Y|V|B|Z|X])");
+            var matches = Regex.Matches(firstLine.Trim(), "([A|R|N|D|C|Q|E|G|H|I|L|K|M|F|P|S|T|W|Y|V|B|Z|X])");
             var symbols = new StringBuilder();
 
             // place symbols into dictionary format
             for (int i=0; i<matches.Count; i++)
             {
-                symbols.AppendLine(string.Format("\t\t{{\'{0}\', {1}}}", matches[i].Value, i));
+                symbols.AppendLine(string.Format("\t\t{{\'{0}\', {1}}}{2}", matches[i].Value, i, i<matches.Count-1?",":""));
             }
 
             // Get Wild Match & Mismatch Scores
-            var wildMatches = Regex.Matches(lastLine, "(-?[0-9]+)[\\s*](-?[0-9]+)[\\s*]}$");
+            var wildMatches = Regex.Matches(lastLine, "(-?[0-9]+)\\s+(-?[0-9]+)\\s*},$");
             int wildMismatch = -1, wildMatch = 1;
 
             if (wildMatches.Count > 0)
@@ -96,6 +96,8 @@ namespace NCBI_Matrix_Converter
                 wildMismatch = int.Parse(wildMatches[0].Groups[1].Value);
                 wildMatch = int.Parse(wildMatches[0].Groups[2].Value);
             }
+
+            matrix = Regex.Replace(matrix, $",\\s*{wildMismatch}\\s*,\\s*}}", "}");
 
             // Format the Output Template
             TxtOutput.Text = string.Format(@Templates.DefaultTemplate,

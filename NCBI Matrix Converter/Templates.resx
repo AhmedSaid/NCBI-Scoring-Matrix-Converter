@@ -119,7 +119,7 @@
   </resheader>
   <data name="DefaultTemplate" xml:space="preserve">
     <value>/// &lt;summary&gt;
-/// DNA Scoring Matrix
+/// {0} DNA Alignment Scoring Matrix
 /// &lt;/summary&gt;
 internal class {0}
 {{
@@ -141,7 +141,7 @@ internal class {0}
 
 	private const int WildMistmatch = {5}, WildMatch = {6};
 
-	public override int Match(char a, char b)
+	public int Match(char a, char b)
 	{{
 		int index1, index2;
 		if (_symbols.TryGetValue(a, out index1) &amp;&amp; _symbols.TryGetValue(b, out index2))

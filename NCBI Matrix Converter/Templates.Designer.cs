@@ -62,7 +62,7 @@ namespace NCBI_Matrix_Converter {
         
         /// <summary>
         ///   Looks up a localized string similar to /// &lt;summary&gt;
-        ////// DNA Scoring Matrix
+        ////// {0} DNA Alignment Scoring Matrix
         ////// &lt;/summary&gt;
         ///internal class {0}
         ///{{
@@ -84,12 +84,12 @@ namespace NCBI_Matrix_Converter {
         ///
         ///	private const int WildMistmatch = {5}, WildMatch = {6};
         ///
-        ///	public override int Match(char a, char b)
+        ///	public int Match(char a, char b)
         ///	{{
         ///		int index1, index2;
         ///		if (_symbols.TryGetValue(a, out index1) &amp;&amp; _symbols.TryGetValue(b, out index2))
         ///		{{
-        ///			return _ma [rest of string was truncated]&quot;;.
+        ///			retur [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string DefaultTemplate {
             get {
