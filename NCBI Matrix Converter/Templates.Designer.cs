@@ -79,7 +79,7 @@ namespace NCBI_Matrix_Converter {
         ///
         ///	private readonly int[,] _matrix = new int[,]
         ///		{{
-        ///			{4}
+        ///{4}
         ///		}};
         ///
         ///	private const int WildMistmatch = {5}, WildMatch = {6};
@@ -89,7 +89,7 @@ namespace NCBI_Matrix_Converter {
         ///		int index1, index2;
         ///		if (_symbols.TryGetValue(a, out index1) &amp;&amp; _symbols.TryGetValue(b, out index2))
         ///		{{
-        ///			retur [rest of string was truncated]&quot;;.
+        ///			return _ [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string DefaultTemplate {
             get {

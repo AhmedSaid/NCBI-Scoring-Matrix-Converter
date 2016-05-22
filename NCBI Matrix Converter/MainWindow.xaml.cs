@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -75,8 +76,10 @@ namespace NCBI_Matrix_Converter
             matrix = matrix.TrimEnd();
 
             // Format the matrix to Array format
-            matrix = Regex.Replace(matrix, "(-?[0-9]+)(\\s+)(-?[0-9]+)", "$1$2,$3,");
-            
+            //matrix = Regex.Replace(matrix, "(-?[0-9]+)(\\s+)(-?[0-9]+)", "$1, $3,");
+            matrix = Regex.Replace(matrix, "(\\s*-?[0-9]+)(\\s+)(-?[0-9]+)",
+                match => string.Format("{0, 4},{1, 4},", match.Groups[1].Value, match.Groups[3].Value));
+
             // Get matrix symbols
             var matches = Regex.Matches(firstLine.Trim(), "([A|R|N|D|C|Q|E|G|H|I|L|K|M|F|P|S|T|W|Y|V|B|Z|X])");
             var symbols = new StringBuilder();
@@ -99,13 +102,20 @@ namespace NCBI_Matrix_Converter
 
             matrix = Regex.Replace(matrix, $",\\s*{wildMismatch}\\s*,\\s*}}", "}");
 
+            var finalMatrix = new StringBuilder();
+
+            foreach (string line in matrix.Split('\n'))
+            {
+                finalMatrix.AppendFormat("\t\t\t{0}\n", line);
+            }
+            
             // Format the Output Template
             TxtOutput.Text = string.Format(@Templates.DefaultTemplate,
                 className,
                 TxtUri.Text,
                 _matrix,
                 symbols,
-                matrix,
+                finalMatrix,
                 wildMismatch,
                 wildMatch);
         }

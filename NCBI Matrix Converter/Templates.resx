@@ -136,7 +136,7 @@ internal class {0}
 
 	private readonly int[,] _matrix = new int[,]
 		{{
-			{4}
+{4}
 		}};
 
 	private const int WildMistmatch = {5}, WildMatch = {6};
