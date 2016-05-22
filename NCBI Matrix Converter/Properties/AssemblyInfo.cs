@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("NCBI Matrix Converter")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Ahmed Said")]
 [assembly: AssemblyProduct("NCBI Matrix Converter")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCopyright("Copyright © 2016 Ahmed Said (https://github.com/AhmedSaid)")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

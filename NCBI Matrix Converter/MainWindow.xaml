@@ -6,7 +6,35 @@
         xmlns:local="clr-namespace:NCBI_Matrix_Converter"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Label Content="NCBI Scoring Matrix URI:" />
+        <TextBox x:Name="TxtUri" Grid.Row="0" Grid.Column="1" />
+        <Button x:Name="BtnFetch" Grid.Row="0" Grid.Column="3" Content="Fetch" Width="100" IsDefault="True" Click="BtnFetch_Click" />
+
+        <Label Grid.Row="2" Grid.ColumnSpan="4" Grid.Column="0" Content="Generation Options:" BorderThickness="1" FontWeight="Bold" />
+        
+        <Label Content="Class Name:"  Grid.Row="3" Grid.Column="0" />
+        <TextBox x:Name="TxtClassName" Grid.Row="3" Grid.Column="1" Text="ScoringMatrix" />
+        <Button x:Name="BtnGenerate" Grid.Row="3" Grid.Column="3" Content="Generate" Width="100" IsEnabled="False" Click="BtnGenerate_Click" />
+
+        <Label Content="Output:"  Grid.Row="5" Grid.Column="0" />
+        <TextBox x:Name="TxtOutput" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" Height="210" />
+
         
     </Grid>
 </Window>
