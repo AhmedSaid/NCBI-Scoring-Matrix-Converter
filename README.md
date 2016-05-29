@@ -1,4 +1,4 @@
-# NCBI-Scoring-Matrix-Converter
+# NCBI Scoring Matrix Converter
 An Application that reads the NCBI Scoring Matrix format and convert it to a usable C# Class.
 
 ### For Example 
