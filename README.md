@@ -58,10 +58,10 @@ internal class Blosum50
 		{'T', 16},
 		{'W', 17},
 		{'Y', 18},
-		{'V', 20},
-		{'B', 21},
-		{'Z', 22},
-		{'X', 23}
+		{'V', 19},
+		{'B', 20},
+		{'Z', 21},
+		{'X', 22}
 	};
 
 	private readonly int[,] _matrix = new int[,]
